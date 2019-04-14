@@ -1,0 +1,11 @@
+Indent rainbow 
+Turbo console log
+Html css support
+Auto rename tag
+Javasicript (ES6) code snippets
+Rest client
+Git lens
+Auto open markdown
+Vetur
+Material icon 
+Monokai++
