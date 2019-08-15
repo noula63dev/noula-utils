@@ -1,0 +1,32 @@
+PM2 as a service :
+
+
+ 
+da root :
+npm install pm2 -g 
+
+Create a linux safe user :
+useradd -s /bin/bash -m -d /home/myuser -c "safe user" myuser
+
+set password for myuser :
+
+passwd safeuser
+
+usermod -aG sudo myuser 
+
+Loggarsi con myuser 
+
+pm2 start /directory/app 
+
+verificare che l'app sia running con :
+
+pm2 list 
+
+pm2 startup 
+Incollare quello che viene mostrato a video dopo il conado pm2 startup , esempio :
+
+sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u myuser --hp /home/myuser
+
+pm2 save  // Salva lo startup script 
+
+eseguire reboot per fare un test 
