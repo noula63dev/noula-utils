@@ -1,0 +1,60 @@
+########################################################################################################################################
+
+Package : create-express-api
+Author: w3cj 
+Repository : github.com/w3cj/create-express-api
+Home page : https://github.com/w3cj/create-express-api#readme
+
+A CLI to automatically clone the Express API Starter.
+
+Installation
+Install the CLI globally OR use npx:
+
+npm install -g create-express-api
+Usage
+# with global install 
+create-express-api name-of-app
+# with npx 
+npx create-express-api name-of-app
+This will create a directory with the given name, clone the express API starter repo into it, and install dependencies.
+
+########################################################################################################################################
+
+
+Package : ez-fetch
+Author: w3cj 
+A fetch wrapper to simplify network requests.
+
+Includes es6-promise, isomorphic-fetch for use in older browsers and for use in a node.js environment
+Inspects content-type header to parse response correctly
+Throws an error (catch) if the response is not OK
+Stringifies JSON and sets content-type header
+Examples
+const ezFetch = require('ez-fetch');
+
+// GET
+ezFetch
+  .get('https://example.com')
+  .then(body => {
+    console.log(body);
+  }).catch(error => {
+    console.error(error);
+  });
+
+// POST, PATCH, PUT, DELETE
+// url, body, fetchOptions
+ezFetch
+  .post('https://example.com/create', {
+    title: 'Hello World'
+  }, {
+    headers: {
+      Authorization: 'Bearer 12345'
+    }
+  }).then(result => {
+    console.log(result);
+  }).catch(error => {
+    console.error(error);
+  });
+
+########################################################################################################################################
+
