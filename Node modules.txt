@@ -1,0 +1,99 @@
+########################################################################################################################################
+
+Package : create-express-api
+Author: w3cj 
+Repository : github.com/w3cj/create-express-api
+Home page : https://github.com/w3cj/create-express-api#readme
+
+A CLI to automatically clone the Express API Starter.
+
+Installation
+Install the CLI globally OR use npx:
+
+npm install -g create-express-api
+Usage
+# with global install 
+create-express-api name-of-app
+# with npx 
+npx create-express-api name-of-app
+This will create a directory with the given name, clone the express API starter repo into it, and install dependencies.
+
+########################################################################################################################################
+
+
+Package : ez-fetch
+Author: w3cj 
+A fetch wrapper to simplify network requests.
+
+Includes es6-promise, isomorphic-fetch for use in older browsers and for use in a node.js environment
+Inspects content-type header to parse response correctly
+Throws an error (catch) if the response is not OK
+Stringifies JSON and sets content-type header
+Examples
+const ezFetch = require('ez-fetch');
+
+// GET
+ezFetch
+  .get('https://example.com')
+  .then(body => {
+    console.log(body);
+  }).catch(error => {
+    console.error(error);
+  });
+
+// POST, PATCH, PUT, DELETE
+// url, body, fetchOptions
+ezFetch
+  .post('https://example.com/create', {
+    title: 'Hello World'
+  }, {
+    headers: {
+      Authorization: 'Bearer 12345'
+    }
+  }).then(result => {
+    console.log(result);
+  }).catch(error => {
+    console.error(error);
+  });
+
+########################################################################################################################################
+
+Packge: monk  
+
+note: monk 2.x drop the support for node < 0.12. If you are still using an earlier version, stick to monk 1.x
+
+const db = require('monk')('localhost/mydb')
+// or
+// const db = require('monk')('user:pass@localhost:port/mydb')
+ 
+const users = db.get('users')
+ 
+users.index('name last')
+users.insert({ name: 'Tobi', bigdata: {} })
+users.find({ name: 'Loki' }, '-bigdata').then(function () {
+  // exclude bigdata field
+})
+users.find({}, {sort: {name: 1}}).then(function () {
+  // sorted by name field
+})
+users.remove({ name: 'Loki' })
+ 
+db.close()
+Features
+Well-designed API signatures
+Easy connections / configuration
+Command buffering. You can start querying right away
+Promises built-in for all queries. Easy interoperability with modules
+Auto-casting of _id in queries
+Allows to set global options or collection-level options for queries. (eg: castIds is true by default for all queries)
+Middlewares
+Most of the Monk's features are implemented as middleware.
+
+There are a bunch of third-parties middlewares that add even more functionalities to Monk:
+
+monk-middleware-wrap-non-dollar-update
+monk-middleware-debug
+monk-middleware-dereference
+Created an nice middleware? Send a PR to add to the list!
+
+########################################################################################################################################
