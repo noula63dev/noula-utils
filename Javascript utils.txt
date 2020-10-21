@@ -1,0 +1,23 @@
+Reicerca di un valore in tutti gli oggeti dell'array :
+esempio ( se cerco 1 trovo il 1 ed il terzo )
+
+pt = [
+    {
+        Title: 'Learn1',
+        Description: 'JS'
+    },
+    {
+        Title: 'Learn1',
+        Description: 'Vue'
+    },
+    {
+        Title: 'Play',
+        Description: 'Tennis 1'
+    },
+]
+    
+return this.pts.filter((pt) => {
+    return Object.values(pt).some( val => 
+        String(val).toLowerCase().match(this.searchText.toLowerCase()) 
+    );
+});
