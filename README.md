@@ -2,14 +2,19 @@
 
 A collections of Vscode extensions I use 
 
-A collections of my Vscode snippets 
+A collections of my UTILITY
 
-## Getting Started
- - Vscode snippets 
+## Vscode snippets
+
     ###
     Clone repo and copy xxxx-Snippet in Your Vscode user snippets to have a working snippet 
  - use the prefix into the snippet .
  - 
+
+ ## PHP Classes and utility files
+
+ ## JS Utilities
+ 
 ### Prerequisites
 
 none
