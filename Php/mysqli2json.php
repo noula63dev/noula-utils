@@ -5,7 +5,7 @@
   * USAGE : 
   *   Define Your query 
   *   Instantiate OBJECT 
-  *      $mysql =  Mysql2json(string $user ,string $password,string $db , string $sql) 
+  *      $mysql =  Mysqli2json(string $user ,string $password,string $db , string $sql) 
   *      $mysql->selectData();  Return Json data ( fields & data )
   *      $mysql->getDatas();    Return Json data only
   *      $mysql->getFields();   Return Json fields only
@@ -18,18 +18,18 @@
   *      $updateSql = "UPDATE sbkbs SET Created = 'Valore', Title = 'Valore', Description = 'Valore' WHERE ID = 'Valore' )";
   *      $delSql = "DELETE FROM sbkbs  WHERE KB_Id = '4'  ";
   *
-  *      $mysqlSelect = new Mysql2Json('root', 'myl1nuxb0x','sbr', $sql);
+  *      $mysqlSelect = new Mysqli2Json('root', 'myl1nuxb0x','sbr', $sql);
   *      $mysqlSelect->selectData();
   *      $mysqlSelect->getDatas();
   *      $mysqlSelect->getFields();
-  *      $mysqlAdd =  new Mysql2Json('root', 'myl1nuxb0x','sbr', $addSql);
+  *      $mysqlAdd =  new Mysqli2Json('root', 'myl1nuxb0x','sbr', $addSql);
   *      $mysqlAdd->addData();
-  *      $mysqlDel =  new Mysql2Json('root', 'myl1nuxb0x','sbr', $delSql);
+  *      $mysqlDel =  new Mysqli2Json('root', 'myl1nuxb0x','sbr', $delSql);
   *      $mysqlDel->delData();
-  *      $mysqlUpdate =  new Mysql2Json('root', 'myl1nuxb0x','sbr', $updateSql);
+  *      $mysqlUpdate =  new Mysqli2Json('root', 'myl1nuxb0x','sbr', $updateSql);
   *      $mysqlUpdate->updateData(); 
   */
-class Mysql2Json
+class Mysqli2Json
 {
     protected $conn = null;
     protected $row = 0; 
