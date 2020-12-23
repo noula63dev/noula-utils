@@ -2,12 +2,14 @@
 require "./vendor/autoload.php";
 use \Firebase\JWT\JWT;
 
+require_once('./configs/constants.php');
+
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: POST");
 header("Content-Type: application/json; charset=utf-8");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
-$secret_key = "00nondiregattosenoncelhainelsacco00";
+//$secret_key = "00nondiregattosenoncelhainelsacco00";
 
 if($_SERVER['REQUEST_METHOD']  === 'POST'){
     
@@ -24,7 +26,7 @@ if($_SERVER['REQUEST_METHOD']  === 'POST'){
             
             http_response_code(200);
             
-            $decoded = JWT::decode($jwt,$secret_key,array('HS256'));
+            $decoded = JWT::decode($jwt,SECRET_KEY,array('HS256'));
             
             $result = array("status" => 1, "msg" => "User Authorized", "user" => $decoded);
 

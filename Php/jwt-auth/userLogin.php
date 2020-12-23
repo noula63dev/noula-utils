@@ -2,6 +2,9 @@
 //ini_set("display_errors" , 1);
 require "./vendor/autoload.php";
 use \Firebase\JWT\JWT;
+
+require_once('./configs/constants.php');
+
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: POST");
 header("Content-Type: application/json; charset=utf-8");
@@ -21,6 +24,7 @@ if($_SERVER['REQUEST_METHOD']  === 'POST'){
     $usersData->selectData();
     if($usersData->getRows() > 0){
         $users = $usersData->getDatas();
+        $id = $users['UserId'];
         $name = $users['NickName'];
         $email = $users['Email'];
         $admin = $users['Admin'];
@@ -32,12 +36,12 @@ if($_SERVER['REQUEST_METHOD']  === 'POST'){
             $exp = $_SERVER['REQUEST_TIME'] + 120;
 
             $user_data = array (
+                "userid" => $id,
                 "email" => $email,
                 "name" => $name,
                 "admin" => $admin
             );
 
-            $secret_key = "00nondiregattosenoncelhainelsacco00";
 
             $payload = array(
                 "iss" => "localhost",
@@ -48,9 +52,9 @@ if($_SERVER['REQUEST_METHOD']  === 'POST'){
             );
 
 
-            $jwt = JWT::encode($payload, $secret_key);
+            $jwt = JWT::encode($payload, SECRET_KEY);
 
-            $decoded = JWT::decode($jwt, $secret_key, array('HS256'));
+            $decoded = JWT::decode($jwt, SECRET_KEY , array('HS256'));
 
             http_response_code(202);
 
