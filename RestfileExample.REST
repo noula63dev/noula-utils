@@ -1,0 +1,17 @@
+
+
+POST http://localhost/noula-utils/Php/jwt-auth/userLogin.php HTTP/1.1
+content-type: application/json
+
+ {
+	"email":"mauro.barducco@gmail.com",
+	"password":"123"
+ }
+###
+
+
+ POST http://localhost/noula-utils/Php/jwt-auth/userAuthorization.php HTTP/1.1
+content-type: application/json
+Authorization:eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJsb2NhbGhvc3QiLCJhdWQiOiJsb2NhbGhvc3QiLCJpYXQiOjE2MDg3NjU4NjIsImV4cCI6MTYwODc2NTk4MiwiZGF0YSI6eyJ1c2VyaWQiOiIxIiwiZW1haWwiOiJtYXVyby5iYXJkdWNjb0BnbWFpbC5jb20iLCJuYW1lIjoiTm91bGEiLCJhZG1pbiI6IjAifX0.3M6191YFk0L04ty19K68FH00S5-ZX5Fx82oZRK6OXjs
+
+###
