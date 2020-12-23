@@ -1,0 +1,77 @@
+<?php
+//ini_set("display_errors" , 1);
+require "./vendor/autoload.php";
+use \Firebase\JWT\JWT;
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: POST");
+header("Content-Type: application/json; charset=utf-8");
+
+
+include('./classes/users.class.php');
+if($_SERVER['REQUEST_METHOD']  === 'POST'){
+
+    $json = json_decode(file_get_contents('php://input'));
+    
+    foreach ($json as $key => $value) {
+        $posted[$key] = $value;
+    }
+    $sql ="SELECT * FROM users WHERE Email = '$posted[email]' ";
+
+    $usersData = new Mysqli2Json('root', 'myl1nuxb0x','labdb', $sql);
+    $usersData->selectData();
+    if($usersData->getRows() > 0){
+        $users = $usersData->getDatas();
+        $name = $users['NickName'];
+        $email = $users['Email'];
+        $admin = $users['Admin'];
+
+        if($users["Password"] === $posted["password"]){
+
+            $iat = $_SERVER['REQUEST_TIME'];
+
+            $exp = $_SERVER['REQUEST_TIME'] + 120;
+
+            $user_data = array (
+                "email" => $email,
+                "name" => $name,
+                "admin" => $admin
+            );
+
+            $secret_key = "00nondiregattosenoncelhainelsacco00";
+
+            $payload = array(
+                "iss" => "localhost",
+                "aud" => "localhost",
+                "iat" => $iat,
+                "exp" => $exp,
+                "data" => $user_data
+            );
+
+
+            $jwt = JWT::encode($payload, $secret_key);
+
+            $decoded = JWT::decode($jwt, $secret_key, array('HS256'));
+
+            http_response_code(202);
+
+            $result = array("jwt"=> $jwt ,"user" => $user_data , "status" => 1, "msg" => "User accepted");
+        }
+        else {
+            http_response_code(401);
+
+            $result = array("status" => 0, "msg" => "Unauthorized");
+        }
+    }
+    else{
+        http_response_code(404);
+
+        $result = array("jwt"=> $jwt , "status" => 0, "msg" => "No user found");
+        
+    }
+}
+else{
+    http_response_code(405);
+    $result = array("status" => 0, "msg" => "Method not allowed");
+}
+echo json_encode($result);
+?>

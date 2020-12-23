@@ -1,0 +1,5 @@
+[X] Create users table 
+[X] Create class to manage users 
+[X] Create file for Authentication ( login and token generation ) usersLogin.php
+[X] Create class for Authorization userAuthorization.php
+[] Manage authorization in all request

@@ -6,7 +6,7 @@
   *   Define Your query 
   *   Instantiate OBJECT 
   *      $mysql =  Mysqli2json(string $user ,string $password,string $db , string $sql) 
-  *      $mysql->selectData();  Return Json data ( set fields & data )
+  *      $mysql->selectData();  Return Json data ( fields & data )
   *      $mysql->getDatas();    Return Json data only
   *      $mysql->getFields();   Return Json fields only
   *      $mysql->addData();     Return result added data
@@ -35,6 +35,9 @@ class Mysqli2Json
     protected $row = 0; 
     protected $result = null;
     protected $dbData = [];
+    protected $Data = [];
+    protected $Fields = [];
+
     public function __construct(string $user ,string $password,string $db , string $sql){
         $this->sql = $sql;
         $this->user = $user;
@@ -61,36 +64,29 @@ class Mysqli2Json
             $i = 0;
             foreach ($fieldsResult as $val)
             {
-            $fields[$i]= $val->name;
-            $i++;
+                $this->Fields[$i]= $val->name;
+                $i++;
             }
             //Fetch into associative array
             while ( $row = $this->result->fetch_assoc())  {
-                $data[]=$row;
+                $this->Data=$row;
             }
-            $this->dbData[] = $fields;
-            $this->dbData[] = $data;
-    
-            //Print array in JSON format
-            return json_encode($this->dbData);
         } else {
             return "no results found";
         }
-        mysqli_free_result($result);
-        mysqli_close($conn); 
+        mysqli_free_result($this->result);
+        mysqli_close($this->conn); 
     }
     public function getRows(){
         return $this->rows;
     }
 
     public function getFields(){
-        $this_fields = $this->dbData[0];
-        return json_encode($this_fields);
+        return $this->Fields;
     }
 
     public function getDatas(){
-        $this_data = $this->dbData[1];
-        return json_encode($this_data);
+        return $this->Data;
     }
 
     public function addData() {
@@ -102,8 +98,8 @@ class Mysqli2Json
         } else {
             return "Encountered error !!!";
         }
-        mysqli_free_result($this->result);
-        mysqli_close($this->conn); 
+        mysqli_free_result($result);
+        mysqli_close($conn); 
     }
 
     public function updateData() {
