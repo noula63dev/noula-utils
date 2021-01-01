@@ -26,7 +26,7 @@ if($_SERVER['REQUEST_METHOD']  === 'POST'){
             
             http_response_code(200);
             
-            $decoded = JWT::decode($jwt,SECRET_KEY,array('HS256'));
+            $decoded = JWT::decode($jwt,SECRET_KEY,array(HASH));
             
             $result = array("status" => 1, "msg" => "User Authorized", "user" => $decoded);
 
