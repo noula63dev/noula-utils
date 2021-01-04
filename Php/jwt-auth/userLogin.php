@@ -10,7 +10,7 @@ header("Access-Control-Allow-Methods: POST");
 header("Content-Type: application/json; charset=utf-8");
 
 
-include('./classes/users.class.php');
+include('./classes/mysqli2json.class.php');
 if($_SERVER['REQUEST_METHOD']  === 'POST'){
 
     $json = json_decode(file_get_contents('php://input'));
