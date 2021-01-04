@@ -33,7 +33,7 @@ if($_SERVER['REQUEST_METHOD']  === 'POST'){
 
             $iat = $_SERVER['REQUEST_TIME'];
 
-            $exp = $_SERVER['REQUEST_TIME'] + 120;
+            $exp = $_SERVER['REQUEST_TIME'] + EXPIRATION_TIME;
 
             $user_data = array (
                 "userid" => $id,
@@ -54,7 +54,7 @@ if($_SERVER['REQUEST_METHOD']  === 'POST'){
 
             $jwt = JWT::encode($payload, SECRET_KEY);
 
-            $decoded = JWT::decode($jwt, SECRET_KEY , array('HS256'));
+            $decoded = JWT::decode($jwt, SECRET_KEY , array(HASH));
 
             http_response_code(202);
 
