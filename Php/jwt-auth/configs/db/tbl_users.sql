@@ -31,7 +31,7 @@ CREATE TABLE `users` (
   `UserId` int(11) NOT NULL,
   `NickName` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `Email` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `Password` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Password` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `Created` timestamp NOT NULL DEFAULT current_timestamp(),
   `LastLogin` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
