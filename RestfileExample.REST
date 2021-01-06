@@ -5,7 +5,7 @@ content-type: application/json
 
  {
 	"email":"mauro.barducco@gmail.com",
-	"password":"123"
+	"password":"68b9dba1a673c69d7c2513868ce513129516566f1023f1435a1188ed48625aed"
  }
 ###
 

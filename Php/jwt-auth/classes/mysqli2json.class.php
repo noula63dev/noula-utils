@@ -98,8 +98,8 @@ class Mysqli2Json
         } else {
             return "Encountered error !!!";
         }
-        mysqli_free_result($result);
-        mysqli_close($conn); 
+        mysqli_free_result($this->$result);
+        mysqli_close($this->$conn); 
     }
 
     public function updateData() {
@@ -110,8 +110,8 @@ class Mysqli2Json
         } else {
             return "Encountered error !!!";
         }
-        mysqli_free_result($result);
-        mysqli_close($conn); 
+        mysqli_free_result($this->$result);
+        mysqli_close($this->$conn); 
     }
 
     public function delData() {
@@ -122,8 +122,8 @@ class Mysqli2Json
         } else {
             return "Encountered error !!!";
         }
-        mysqli_free_result($result);
-        mysqli_close($conn); 
+        mysqli_free_result($this->$result);
+        mysqli_close($this->$conn); 
     }
 }
 ?>
